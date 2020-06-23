@@ -9,6 +9,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.bigbang.mygitapp.util.Constants.BASE_URL;
+
 public class GitRetrofitInstance {
 
     private static GitRetrofitInstance gitRetrofitInstance = null;
@@ -17,7 +19,6 @@ public class GitRetrofitInstance {
 
     private GitRetrofitInstance(){
         gitService = createGitService(createRetrofitInstance());
-
     }
     public static GitRetrofitInstance getGitRetrofitInstance() {
         if(gitRetrofitInstance == null)
@@ -26,7 +27,7 @@ public class GitRetrofitInstance {
     }
 
     private Retrofit createRetrofitInstance(){
-        return new Retrofit.Builder().baseUrl("https://api.github.com/")
+        return new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();

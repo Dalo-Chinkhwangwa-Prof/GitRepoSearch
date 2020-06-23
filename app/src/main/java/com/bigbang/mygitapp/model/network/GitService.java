@@ -8,7 +8,10 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
+import static com.bigbang.mygitapp.util.Constants.GET_REPOSITORIES;
+import static com.bigbang.mygitapp.util.Constants.USER_PATH;
+
 public interface GitService {
-    @GET("users/{user_name}/repos")
-    Observable<List<Repository>> getUserRepositories(@Path("user_name") String gitUserName);
+    @GET(GET_REPOSITORIES)
+    Observable<List<Repository>> getUserRepositories(@Path(USER_PATH) String gitUserName);
 }
